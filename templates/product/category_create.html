@@ -1,0 +1,60 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% block title %}
+    Category Create
+{% endblock title %}
+
+{% block content %}
+<div class="content-page">
+    <div class="container-fluid add-form-list">
+       <div class="row justify-content-center">
+           <div class="col-sm-6">
+               <div class="card">
+                   <div class="card-header d-flex justify-content-center bg-primary">
+                       <div class="header-title">
+                           <h4 class="card-title">Add category</h4>
+                       </div>
+                   </div>
+                   <div class="card-body">
+                       <form action="" data-toggle="validator">
+                           <div class="row">                                
+                               <div class="col-md-12">
+                                   <div class="form-group">
+                                       
+                                       {{ form.name|as_crispy_field }}
+                                   </div>
+                               </div>
+                               <div class="col-md-12">                      
+                                   <div class="form-group">
+                                    {{ form.code|as_crispy_field }}
+                                   </div>
+                               </div>                                 
+                               <div class="col-md-12">
+                                   <div class="form-group">
+                                    {{ form.parent|as_crispy_field }}
+                                   </div>
+                               </div>  
+                               <div class="col-md-12">
+                                   <div class="form-group">
+                                    {{ form.image|as_crispy_field }}
+                                   </div>
+                               </div>
+                               <div class="col-md-12">
+                                <div class="form-group">
+                                 {{ form.is_active|as_crispy_field }}
+                                </div>
+                            </div>                                  
+                           </div>                            
+                           <button type="submit" class="btn btn-primary mr-2">Add category</button>
+                           <button type="reset" class="btn btn-danger">Reset</button>
+                       </form>
+                   </div>
+               </div>
+           </div>
+       </div>
+       <!-- Page end  -->
+   </div>
+     </div>
+{% endblock content %}
+    
+    
