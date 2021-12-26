@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <title>{% block blockname %} {% endblock blockname %}</title>
+
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="{% static 'images/favicon.ico' %}" />
+    {% include 'include/style.html' %}
+  </head>
+
+  <body class="">
+    <!-- loader Start -->
+    <div id="loading">
+      <div id="loading-center"></div>
+    </div>
+    <!-- loader END -->
+
+    <!-- Wrapper Start -->
+    <div class="wrapper">
+      {% include 'include/sidebar.html' %} 
+      {% include 'include/top_navbar.html'%} 
+      {% block content %} {% endblock content %}
+    </div>
+    <!-- Wrapper End-->
+    {% include 'include/footer.html' %} 
+    {% include 'include/script.html' %}
+  </body>
+</html>
