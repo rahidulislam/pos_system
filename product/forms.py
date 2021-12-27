@@ -5,4 +5,4 @@ class CategoryForm(forms.ModelForm):
     
     class Meta:
         model = Category
-        fields = "__all__"
+        fields = ('parent','name', 'code', 'image', 'is_active')

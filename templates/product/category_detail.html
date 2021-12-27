@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+{% block title %}
+    {{ category.name }}
+{% endblock %}
+{% block content %}
+    <div class="container-fluid">
+         <div class="row">
+            <div class="col-lg-4">
+               <div class="card card-block p-card">
+
+                     <div class="profile-card rounded">
+                        <img src="{{ category.image_url }}" alt="profile-bg" class="avatar-100 rounded d-block mx-auto img-fluid mb-3">
+                        <h3 class="font-600 text-white text-center mb-0">{{ category.name}}</h3>
+
+                     </div>
+
+
+               </div>
+            </div>
+            <div class="col-lg-8">
+               <div class="card card-block mb-3">
+                  <div class="card-header d-flex justify-content-between bg-primary">
+                     <div class="iq-header-title">
+                        <h4 class="card-title mb-0">About {{ category.name }}</h4>
+                     </div>
+                  </div>
+                  <div class="card-body">
+                     <p>
+                         {{ category.short_description }}
+                     </p>
+                     <h5 class="mb-2">Code</h5>
+                      <span>{{ category.code }}</span>
+
+                     <h5 class="mb-2 mt-4">Parent Category</h5>
+                      <span>{{ category.parent }}</span>
+                      <h5 class="mb-2 mt-4">Status</h5>
+                      <span>
+                          {% if category.is_active %}
+                            <i class="fa fa-check-circle text-primary fa-lg mr-2"></i>Active
+                          {% else %}
+                              <i class="fa fa-times text-danger fa-lg mr-2"></i>Inactive
+                          {% endif %}
+                      </span>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+{% endblock %}

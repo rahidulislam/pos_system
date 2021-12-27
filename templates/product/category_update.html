@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 {% load crispy_forms_tags %}
 {% block title %}
-    Category Create
+    Update {{ category.name }}
 {% endblock title %}
 
 {% block content %}
@@ -11,33 +11,33 @@
             <div class="card">
                 <div class="card-header d-flex justify-content-center bg-primary">
                     <div class="header-title">
-                        <h4 class="card-title">Create category</h4>
+                        <h4 class="card-title">Update Category</h4>
                     </div>
                 </div>
                 <div class="card-body">
                     <form action="" method="POST" enctype="multipart/form-data">
                         {% csrf_token %}
-                        <div class="row">                                
+                        <div class="row">
                             <div class="col-md-12">
                                 <div class="form-group">
                                     {{ form.name|as_crispy_field }}
                                 </div>
                             </div>
-                            <div class="col-md-12">
+                             <div class="col-md-12">
                                 <div class="form-group">
                                     {{ form.short_description|as_crispy_field }}
                                 </div>
                             </div>
-                            <div class="col-md-12">                      
+                            <div class="col-md-12">
                                 <div class="form-group">
                                  {{ form.code|as_crispy_field }}
                                 </div>
-                            </div>                                 
+                            </div>
                             <div class="col-md-12">
                                 <div class="form-group">
                                  {{ form.parent|as_crispy_field }}
                                 </div>
-                            </div>  
+                            </div>
                             <div class="col-md-12">
                                 <div class="form-group">
                                  {{ form.image|as_crispy_field }}
@@ -46,12 +46,12 @@
                             <div class="col-md-12">
                              <div class="form-group">
                               {{ form.is_active|as_crispy_field }}
-                             </div>                                 
+                             </div>
                         </div>
                         <a href="{% url 'product:category-list' %}" class="btn btn-secondary mr-2">Cancel</a>
-                        <button type="submit" class="btn btn-primary mr-2">Create</button>
+                        <button type="submit" class="btn btn-primary mr-2">Update</button>
 
-                        
+
                     </form>
                 </div>
             </div>
@@ -60,5 +60,3 @@
     <!-- Page end  -->
 </div>
 {% endblock content %}
-    
-    
