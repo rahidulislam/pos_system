@@ -1,9 +1,9 @@
 from django.db.models import fields
 from django.shortcuts import render
 from django.urls import reverse
-from django.views.generic import CreateView, ListView, UpdateView, DetailView, DeleteView
-from product.models import Category
-from product.forms import CategoryForm
+from django.views.generic import CreateView, ListView, UpdateView, DetailView, DeleteView, View
+from product.models import Category, Product
+from product.forms import CategoryForm, ProductFrom
 from django.contrib import messages
 
 
@@ -23,7 +23,7 @@ class CategoryCreateView(CreateView):
     template_name = "product/category_create.html"
 
     def get_success_url(self):
-        messages.success(self.request, "Category is created successfully")
+        messages.success(self.request, "{0} Category is created successfully".format(self.object))
         return reverse('product:category-list')
 
 
@@ -34,7 +34,7 @@ class CategoryUpdateView(UpdateView):
     template_name = "product/category_update.html"
 
     def get_success_url(self):
-        messages.success(self.request, "Category is Updated successfully")
+        messages.success(self.request, "{0} Category is Updated successfully".format(self.object))
         return reverse('product:category-list')
 
 
@@ -43,11 +43,56 @@ class CategoryDetailView(DetailView):
     template_name = 'product/category_detail.html'
     context_object_name = 'category'
 
+
 class CategoryDeleteView(DeleteView):
     model = Category
     template_name = 'product/category_delete.html'
     context_object_name = 'category'
 
     def get_success_url(self):
-        messages.success(self.request, "Category is deleted successfully")
+        messages.success(self.request, "{0} Category is deleted successfully".format(self.object))
         return reverse('product:category-list')
+
+
+class ProductCreateView(CreateView):
+    model = Product
+    form_classes = ProductFrom
+    fields = ['name', 'code', 'category', 'type', 'cost', 'price', 'quantity', 'tax_method', 'description', 'image']
+    template_name = 'product/product_create.html'
+
+    def get_success_url(self):
+        messages.success(self.request, "{0} product is created successfully".format(self.object))
+        return reverse('product:product-list')
+
+
+class ProductListView(ListView):
+    model = Product
+    template_name = 'product/product_list.html'
+    context_object_name = 'products'
+
+
+class ProductUpdateView(UpdateView):
+    model = Product
+    form_classes = ProductFrom
+    fields = ['name', 'code', 'category', 'type', 'cost', 'price', 'quantity', 'tax_method', 'description', 'image']
+    template_name = 'product/product_update.html'
+
+    def get_success_url(self):
+        messages.success(self.request, "{0} product is updated successfully".format(self.object))
+        return reverse('product:product-list')
+
+
+class ProductDetailView(DetailView):
+    model = Product
+    template_name = 'product/product_detail.html'
+    context_object_name = 'product'
+
+
+class ProductDeleteView(DeleteView):
+    model = Product
+    template_name = 'product/product_delete.html'
+    context_object_name = 'product'
+
+    def get_success_url(self):
+        messages.success(self.request, "{0} Product is deleted successfully".format(self.object))
+        return reverse('product:product-list')

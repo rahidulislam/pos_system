@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+{% block title %}
+    {{ product.name }}
+{% endblock %}
+{% block content %}
+    <div class="container-fluid">
+         <div class="row">
+            <div class="col-lg-4">
+               <div class="card card-block p-card">
+
+                     <div class="profile-card rounded">
+                        <img src="{{ product.image_url }}" alt="profile-bg" class="avatar-100 rounded d-block mx-auto img-fluid mb-3">
+                        <h3 class="font-600 text-white text-center mb-0">{{ product.name}}</h3>
+
+                     </div>
+
+
+               </div>
+            </div>
+            <div class="col-lg-8">
+               <div class="card card-block mb-3">
+                  <div class="card-header d-flex justify-content-between bg-primary">
+                     <div class="iq-header-title">
+                        <h4 class="card-title mb-0">About {{ product.name }}</h4>
+                     </div>
+                  </div>
+                  <div class="card-body">
+                     <p>
+                         {{ product.description }}
+                     </p>
+                     <h5 class="mb-2">Code</h5>
+                      <span>{{ product.code }}</span>
+
+                     <h5 class="mb-2 mt-4">Category</h5>
+                      <span>{{ product.category }}</span>
+                      <h5 class="mb-2 mt-4">Product Type</h5>
+                      <span>{{ product.type }}</span>
+                      <h5 class="mb-2 mt-4">Cost</h5>
+                      <span>TK. {{ product.cost|floatformat:"2" }}</span>
+                      <h5 class="mb-2 mt-4">Price</h5>
+                      <span>TK. {{ product.price|floatformat:"2" }}</span>
+                      <h5 class="mb-2 mt-4">Quantity</h5>
+                      <span>{{ product.quantity }}</span>
+                      <h5 class="mb-2 mt-4">Tax Method</h5>
+                      <span>{{ product.tax_method }}</span>
+                      <h5 class="mb-2 mt-4">Created</h5>
+                      <span>{{ product.created_at|date:"d M Y" }}</span>
+                      <h5 class="mb-2 mt-4">Last Update</h5>
+                      <span>{{ product.updated_at|date:"d M Y" }}</span>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+{% endblock %}
