@@ -1,0 +1,65 @@
+{% extends 'base.html' %}
+{% load crispy_forms_filters %}
+{% block title %}
+Supplier Update
+{% endblock %}
+
+{% block content %}
+    <div class="container-fluid">
+        <div class="row justify-content-center">
+            <div class="col-sm-8">
+                <div class="card">
+                    <div class="card-header d-flex justify-content-between bg-primary">
+                        <div class="header-title">
+                            <h4 class="card-title">Update Supplier "{{ object }}" </h4>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <form action="" method="POST">
+                            {% csrf_token %}
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                       {{ form.name|as_crispy_field }}
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                         {{ form.email|as_crispy_field }}
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        {{ form.phone|as_crispy_field }}
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                       {{ form.phone2|as_crispy_field }}
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                       {{ form.address|as_crispy_field }}
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        {{ form.city|as_crispy_field }}
+                                    </div>
+                                </div>
+
+                                <div class="col-md-12">
+                                   {{ form.country|as_crispy_field }}
+                                </div>
+                            </div>
+                            <a href="{% url 'supplier:supplier-list' %}" class="btn btn-secondary mr-2">Cancel</a>
+                            <button type="submit" class="btn btn-primary mr-2">Update</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Page end  -->
+    </div>
+{% endblock %}

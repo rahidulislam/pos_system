@@ -11,12 +11,14 @@ from django.contrib import messages
 
 
 class CategoryListView(ListView):
+    """Category List"""
     model = Category
     context_object_name = 'categories'
     template_name = 'product/category_list.html'
 
 
 class CategoryCreateView(CreateView):
+    """Create New Category"""
     model = Category
     fields = ('parent', 'name', 'short_description', 'code', 'image', 'is_active')
     form_classes = CategoryForm
@@ -28,6 +30,7 @@ class CategoryCreateView(CreateView):
 
 
 class CategoryUpdateView(UpdateView):
+    """Update Existing Category"""
     model = Category
     fields = ('parent', 'name', 'short_description', 'code', 'image', 'is_active')
     form_classes = CategoryForm
@@ -39,12 +42,14 @@ class CategoryUpdateView(UpdateView):
 
 
 class CategoryDetailView(DetailView):
+    """Detail Existing Category"""
     model = Category
     template_name = 'product/category_detail.html'
     context_object_name = 'category'
 
 
 class CategoryDeleteView(DeleteView):
+    """Delete Existing Category"""
     model = Category
     template_name = 'product/category_delete.html'
     context_object_name = 'category'
@@ -55,6 +60,7 @@ class CategoryDeleteView(DeleteView):
 
 
 class ProductCreateView(CreateView):
+    """Create New Category"""
     model = Product
     form_classes = ProductFrom
     fields = ['name', 'code', 'category', 'type', 'cost', 'price', 'quantity', 'tax_method', 'description', 'image']
@@ -66,12 +72,14 @@ class ProductCreateView(CreateView):
 
 
 class ProductListView(ListView):
+    """All Product List"""
     model = Product
     template_name = 'product/product_list.html'
     context_object_name = 'products'
 
 
 class ProductUpdateView(UpdateView):
+    """Update Existing Product"""
     model = Product
     form_classes = ProductFrom
     fields = ['name', 'code', 'category', 'type', 'cost', 'price', 'quantity', 'tax_method', 'description', 'image']
@@ -83,12 +91,14 @@ class ProductUpdateView(UpdateView):
 
 
 class ProductDetailView(DetailView):
+    """Detail Existing Product"""
     model = Product
     template_name = 'product/product_detail.html'
     context_object_name = 'product'
 
 
 class ProductDeleteView(DeleteView):
+    """Delete Existing Product"""
     model = Product
     template_name = 'product/product_delete.html'
     context_object_name = 'product'
