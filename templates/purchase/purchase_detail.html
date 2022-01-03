@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+{% block title %}
+    {{ purchase }}
+{% endblock %}
+{% block content %}
+    <div class="container-fluid">
+         <div class="row justify-content-center">
+
+            <div class="col-lg-8">
+               <div class="card card-block mb-3">
+                  <div class="card-header d-flex justify-content-between bg-primary">
+                     <div class="iq-header-title">
+                        <h4 class="card-title mb-0">About {{ purchase.purchase_no }}</h4>
+                     </div>
+                  </div>
+                  <div class="card-body">
+                    <p>
+                         {{ purchase.purchase_note }}
+                     </p>
+                     <h5 class="mb-2">Supplier</h5>
+                      <span>{{ purchase.supplier }}</span>
+
+                     <h5 class="mb-2 mt-4">Discount</h5>
+                      <span>{{ purchase.discount }}</span>
+                      <h5 class="mb-2 mt-4">Shipping</h5>
+                      <span>{{ purchase.shipping }}</span>
+                      <h5 class="mb-2 mt-4">Received Type</h5>
+                      <span>{{ purchase.received_type }}</span>
+                      <h5 class="mb-2 mt-4">Tax Type</h5>
+                      <span>{{ purchase.tax_type }}</span>
+
+                      <h5 class="mb-2 mt-4">Purchase Date</h5>
+                      <span>{{ purchase.purchase_datet|date:"d M Y" }}</span>
+
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+{% endblock %}

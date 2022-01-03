@@ -1,6 +1,6 @@
 {% extends 'base.html' %}
 {% load crispy_forms_filters %}
-{% block title %} Create Purchase {% endblock %}
+{% block title %} Update {{ object }} {% endblock %}
 {% block content %}
     <div class="container-fluid add-form-list">
         <div class="row">
@@ -8,7 +8,7 @@
                 <div class="card">
                     <div class="card-header d-flex justify-content-between">
                         <div class="header-title">
-                            <h4 class="card-title">Create Purchase</h4>
+                            <h4 class="card-title">Update {{ object }}</h4>
                         </div>
                     </div>
                     <div class="card-body">
@@ -58,11 +58,8 @@
                                 </div>
 
                             </div>
-
-
-                            <a href="{% url 'purchase:purchase-list' %}" class="btn btn-danger">Cancel</a>
-                            <button type="submit" class="btn btn-primary mr-2">Create</button>
-
+                            <button type="reset" class="btn btn-danger">Cancel</button>
+                            <button type="submit" class="btn btn-primary mr-2">Update</button>
                         </form>
                     </div>
                 </div>
