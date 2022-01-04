@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+{% block title %}
+    {{ customer }} Detail
+{% endblock %}
+{% block content %}
+    <div class="container-fluid">
+         <div class="row justify-content-center">
+
+            <div class="col-lg-8">
+               <div class="card card-block mb-3">
+                  <div class="card-header d-flex justify-content-between bg-primary">
+                     <div class="iq-header-title">
+                        <h4 class="card-title mb-0">About {{ customer }}</h4>
+                     </div>
+                  </div>
+                  <div class="card-body">
+
+                     <h5 class="mb-2">Customer Name</h5>
+                      <span>{{ customer.name }}</span>
+
+                     <h5 class="mb-2 mt-4">Email</h5>
+                      <span>{{ customer.email }}</span>
+                      <h5 class="mb-2 mt-4">Phone</h5>
+                      <span>{{ customer.phone }}</span>
+                      <h5 class="mb-2 mt-4">Address</h5>
+                      <span>{{ customer.address }}</span>
+                      <h5 class="mb-2 mt-4">City</h5>
+                      <span>{{ customer.city }}%</span>
+                      <h5 class="mb-2 mt-4">Country</h5>
+                      <span>Tk. {{ customer.country }}</span>
+                      <h5 class="mb-2 mt-4">Customer Group</h5>
+                      <span>
+                          {% if customer.customer_group %}
+                            {{ customer.customer_group }}
+                          {% endif %}
+                      </span>
+
+
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+{% endblock %}

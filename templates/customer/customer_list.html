@@ -1,0 +1,67 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %} Customer List {% endblock %}
+{% block content %}
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="d-flex flex-wrap flex-wrap align-items-center justify-content-between mb-4">
+                    <div>
+                        <h4 class="mb-3">Customer List({{ customers.count }})</h4>
+
+                    </div>
+                    <a href="{% url 'customer:customer-create' %}" class="btn btn-primary add-list"><i class="las la-plus mr-3"></i>Add Customer</a>
+                </div>
+            </div>
+            <div class="col-lg-12">
+                <div class="table-responsive rounded mb-3">
+                <table class="data-tables table mb-0 tbl-server-info">
+                    <thead class="bg-white text-uppercase">
+                        <tr class="ligth ligth-data">
+                            <th>#</th>
+                            <th>Name</th>
+                            <th>Email</th>
+                            <th>Phone</th>
+                            <th>City</th>
+                            <th>Country</th>
+                            <th>Customer Group</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody class="ligth-body">
+                    {% for customer in customers %}
+                    <tr>
+                            <td>{{ forloop.counter }}</td>
+                            <td>{{ customer.name }}</td>
+                            <td>{{ customer.email }}</td>
+                            <td>{{ customer.phone }}</td>
+
+                            <td>{{ customer.city }}</td>
+                            <td>{{ customer.country }}</td>
+                            <td>
+                                {% if customer.customer_group %}
+                                    {{ customer.customer_group }}
+                                {% endif %}
+
+                            </td>
+                            <td>
+                                <div class="d-flex align-items-center list-action">
+                                    <a class="badge badge-info mr-2" data-toggle="tooltip" data-placement="top" title="" data-original-title="View"
+                                        href="{{ customer.get_absolute_url }}"><i class="ri-eye-line mr-0"></i></a>
+                                    <a class="badge bg-success mr-2" data-toggle="tooltip" data-placement="top" title="" data-original-title="Edit"
+                                        href="{{ customer.get_update_url }}"><i class="ri-pencil-line mr-0"></i></a>
+                                    <a class="badge bg-warning mr-2" data-toggle="tooltip" data-placement="top" title="" data-original-title="Delete"
+                                        href="{{ customer.get_delete_url }}"><i class="ri-delete-bin-line mr-0"></i></a>
+                                </div>
+                            </td>
+                        </tr>
+                    {% endfor %}
+
+                    </tbody>
+                </table>
+                </div>
+            </div>
+        </div>
+        <!-- Page end  -->
+    </div>
+{% endblock %}
