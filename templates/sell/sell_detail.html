@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+{% block title %}
+    {{ sell }} Detail
+{% endblock %}
+{% block content %}
+    <div class="container-fluid">
+         <div class="row justify-content-center">
+
+            <div class="col-lg-8">
+               <div class="card card-block mb-3">
+                  <div class="card-header d-flex justify-content-between bg-primary">
+                     <div class="iq-header-title">
+                        <h4 class="card-title mb-0">About {{ sell }}</h4>
+                     </div>
+                  </div>
+                  <div class="card-body">
+                    <p>
+                         {{ sell.sell_note }}
+                     </p>
+                     <h5 class="mb-2">Reference No</h5>
+                      <span>{{ sell.reference_no }}</span>
+
+                     <h5 class="mb-2 mt-4">Biller</h5>
+                      <span>{{ sell.biller }}</span>
+                      <h5 class="mb-2 mt-4">Customer</h5>
+                      <span>{{ sell.customer_name }}</span>
+                      <h5 class="mb-2 mt-4">Order TAX</h5>
+                      <span>{{ sell.order_tax }}</span>
+                      <h5 class="mb-2 mt-4">Order Discount</h5>
+                      <span>{{ sell.order_discount }}%</span>
+                      <h5 class="mb-2 mt-4">Shipping</h5>
+                      <span>Tk. {{ sell.shipping }}</span>
+                      <h5 class="mb-2 mt-4">Sell Status</h5>
+                      <span>{{ sell.sell_status }}</span>
+                      <h5 class="mb-2 mt-4">Payment Status</h5>
+                      <span>{{ sell.payment_status }}</span>
+
+                      <h5 class="mb-2 mt-4">Sell Date</h5>
+                      <span>{{sell.sell_date|date:"d M Y" }}</span>
+
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+{% endblock %}

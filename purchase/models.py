@@ -39,10 +39,4 @@ class Purchase(models.Model):
         return reverse('purchase:purchase-delete', kwargs={'pk': self.pk})
 
 
-class PurchaseItem(models.Model):
-    purchase = models.ForeignKey(Purchase, on_delete=models.CASCADE, related_name='purchase_order')
-    product = models.ForeignKey(Product, on_delete=models.CASCADE, related_name='purchase_product')
-    price = models.DecimalField(max_digits=9, decimal_places=2, default=0.00)
-    quantity = models.PositiveIntegerField(default=1)
-    created_at = models.DateTimeField(auto_now_add=True)
-    updated_at = models.DateTimeField(auto_now=True)
+
