@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+{% block title %}
+    {{ user }} Detail
+{% endblock %}
+{% block content %}
+    <div class="container-fluid">
+        <div class="row justify-content-center">
+
+            <div class="col-lg-8">
+                <div class="card card-block mb-3">
+                    <div class="card-header d-flex justify-content-between bg-primary">
+                        <div class="iq-header-title">
+                            <h4 class="card-title mb-0">About {{ user }}</h4>
+                        </div>
+                    </div>
+                    <div class="card-body">
+
+                        <h5 class="mb-2">Name</h5>
+                        <span>{{ user.profile.name }}</span>
+
+                        <h5 class="mb-2 mt-4">Email</h5>
+                        <span>{{ user.profile.email }}</span>
+                        <h5 class="mb-2 mt-4">Phone</h5>
+                        <span>{{ user.profile.phone }}</span>
+                        <h5 class="mb-2 mt-4">Gender</h5>
+                        <span>{{ user.profile.gender }}</span>
+
+                        <h5 class="mb-2 mt-4">UserName</h5>
+                        <span>Tk. {{ user.username }}</span>
+                        <h5 class="mb-2 mt-4">Status</h5>
+
+
+                          {% if user.profile.is_active %}
+                              <span class="text-success"><i class="fa fa-check-circle"></i> Active</span>
+                          {% else %}
+                              <span class="text-danger"><i class="fa fa-times"></i> Inactive </span>
+                          {% endif %}
+
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

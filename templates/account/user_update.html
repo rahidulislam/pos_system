@@ -1,0 +1,64 @@
+{% extends 'base.html' %}
+{% load crispy_forms_filters %}
+{% block title %}
+   Update User {{ object }}
+{% endblock title %}
+
+{% block content %}
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="card">
+                    <div class="card-header d-flex justify-content-between bg-primary">
+                        <div class="header-title">
+                            <h4 class="card-title">Update User {{ object }}</h4>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <form action="" method="POST" enctype="multipart/form-data">
+                            {% csrf_token %}
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        {{ profile_form.name|as_crispy_field }}
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        {{ profile_form.phone|as_crispy_field }}
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        {{ profile_form.email|as_crispy_field }}
+                                    </div>
+                                </div>
+
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        {{ profile_form.gender|as_crispy_field }}
+
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        {{ form.username|as_crispy_field }}
+                                    </div>
+                                </div>
+
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        {{ profile_form.is_active|as_crispy_field }}
+                                    </div>
+                                </div>
+                            </div>
+                            <a href="{% url 'account:user-list' %}" class="btn btn-secondary mr-2">Cancel</a>
+                            <button type="submit" class="btn btn-primary mr-2">Update</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Page end  -->
+    </div>
+{% endblock content %}
