@@ -14,3 +14,12 @@ class UpdateUserForm(forms.ModelForm):
     class Meta:
         model = User
         fields = ['username']
+
+
+class LoginForm(forms.Form):
+    username = forms.CharField(label='', widget=forms.TextInput(attrs=
+                                                                {'class': 'floating-input',
+                                                                 'placeholder': 'Username'}))
+    password = forms.CharField(label='', widget=forms.PasswordInput(attrs=
+                                                                    {'class': 'floating-input',
+                                                                     'placeholder': 'Password'}))

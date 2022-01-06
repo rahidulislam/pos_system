@@ -141,4 +141,5 @@ INTERNAL_IPS = [
 
 # Crispy Form Templatepack for bootstrap4
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
-
+LOGIN_URL = 'accounts/login/'
+LOGOUT_REDIRECT_URL = 'accounts/login/'

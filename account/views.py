@@ -1,8 +1,9 @@
+from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.models import User
 from django.shortcuts import render, redirect, get_object_or_404
-from django.views.generic import View, ListView, UpdateView, DetailView, DeleteView
+from django.views.generic import View, ListView, UpdateView, DetailView, DeleteView, RedirectView
 from django.contrib.auth.forms import UserCreationForm
-from account.forms import ProfileForm, UpdateUserForm
+from account.forms import ProfileForm, UpdateUserForm, LoginForm
 from django.contrib import messages
 from django.urls import reverse
 
@@ -75,3 +76,36 @@ class UserDeleteView(DeleteView):
     def get_success_url(self):
         messages.success(self.request, '{} is deleted successfully'.format(self.object))
         return reverse('account:user-list')
+
+
+class LoginView(View):
+    template_name = 'account/login.html'
+    from_class = LoginForm
+
+    def get(self, request):
+        if request.user.is_authenticated:
+            return redirect('core:home')
+        form = self.from_class
+        return render(request, self.template_name, {'form': form})
+
+    def post(self, request):
+        if request.user.is_authenticated:
+            return redirect('core:home')
+
+        form = self.from_class(request.POST)
+        if form.is_valid():
+            username = form.cleaned_data.get('username')
+            password = form.cleaned_data.get('password')
+            user = authenticate(username=username, password=password)
+            if user is not None:
+                login(request, user)
+                messages.success(request, 'Welcome {}, You are logged in Successfully'.format(user))
+                return redirect('core:home')
+        return render(request, self.template_name, {'form': form})
+
+
+class LogOutView(View):
+    def get(self, request):
+        logout(request)
+        messages.info(request, "Logged out successfully!")
+        return redirect('account:user-login')

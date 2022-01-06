@@ -48,7 +48,9 @@
                     <ul class="navbar-nav ml-auto navbar-list align-items-center">
 
                         <li>
-                            <a href="#" class="btn border add-btn shadow-none mx-2 d-none d-md-block" data-toggle="modal" data-target="#new-order"><i class="las la-plus mr-2"></i>New Order</a>
+                            <a href="#" class="btn border add-btn shadow-none mx-2 d-none d-md-block"
+                               data-toggle="modal" data-target="#new-order"><i class="las la-plus mr-2"></i>New
+                                Order</a>
                         </li>
                         <li class="nav-item nav-icon search-content">
                             <a
@@ -464,9 +466,12 @@
                                                         class="btn border mr-2"
                                                 >Profile</a
                                                 >
-                                                <a href="auth-sign-in.html" class="btn border"
+                                                {% if request.user.is_authenticated %}
+                                                <a href="{% url 'account:user-logout' %}" class="btn border"
                                                 >Sign Out</a
                                                 >
+                                                {% endif %}
+
                                             </div>
                                         </div>
                                     </div>
